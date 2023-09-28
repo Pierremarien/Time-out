@@ -1,0 +1,63 @@
+section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -350px;
+    
+    .game {
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        width: 700px;
+        height: 500px;
+
+        .container {
+            border: 1px solid black;
+            border-radius: 10px;
+            
+            &--hole {
+                display: grid;
+                grid-template-columns: repeat(4, 70px);
+                align-items: center;
+                justify-items: center;
+                grid-gap: 20px;
+                padding: 30px;
+                cursor: crosshair;
+            }
+
+            &--scoreboard {
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 50px; 
+
+                .scoreContainer {
+                    border: 1px solid black;
+                    padding: 10px;
+                    border-radius: 5px;
+
+                    .score {
+                    font-weight: bold;
+                    }
+                }
+
+                .startButton {
+                    background-color: #00ff00;
+                    border-radius: 5px;
+                    padding: 10px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #009900;
+                    }
+                }
+            }
+        }
+    }
+}
