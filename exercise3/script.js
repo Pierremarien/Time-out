@@ -19,14 +19,21 @@
     function molesPop() {
       const randomHoleIndex = Math.floor(Math.random() * holes.length);
       const hole = holes[randomHoleIndex];
+      const randomDelay = Math.random() * 2 + 1;
+      const delayInMilliseconds = randomDelay * 1000;
   
       hole.classList.add("mole");
       setTimeout(() => {
-        hole.classList.remove("mole");
         if (isGameActive) {
-          molesPop();
-        }
-      }, 1000); 
+            hole.classList.remove("mole");
+            if (!hole.classList.contains("clicked")) {
+                score--;
+                scoreDisplay.textContent = `SCORE: ${score}`;
+              }
+              hole.classList.remove("clicked");
+            molesPop();
+          }
+      }, delayInMilliseconds); 
     }
   
     function whackMole(e) {
@@ -34,13 +41,10 @@
   
       if (e.target.classList.contains("mole")) {
         e.target.classList.add("clicked")
-        setTimeout(() => {
-            e.target.classList.remove("clicked");
-        },300)
         e.target.classList.remove("mole");
         score++;
         scoreDisplay.textContent = `SCORE: ${score}`;
-      }
+      } 
     }
   
     holes.forEach((hole) => hole.addEventListener("click", whackMole));
